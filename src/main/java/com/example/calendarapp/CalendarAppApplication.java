@@ -3,6 +3,7 @@ package com.example.calendarapp;
 import com.example.calendarapp.event.*;
 import com.example.calendarapp.event.update.UpdateMeeting;
 import com.example.calendarapp.reader.EventCsvReader;
+import com.example.calendarapp.reader.RawCsvReader;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class CalendarAppApplication {
         Schedule schedule = new Schedule();
 
         // csv의 데이터를 통해 대량의 데이터들을 불러오는 소스
-        EventCsvReader csvReader = new EventCsvReader();
+        EventCsvReader csvReader = new EventCsvReader(new RawCsvReader());
         String meetingCsvPath = "/data/meeting.csv";
 
         // csv 파일을 읽고 schedule 객체에 추가
